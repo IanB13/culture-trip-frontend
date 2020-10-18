@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { googleFinishedLoading } from '../reducers/actions';
+import { googleFinishedLoading } from '../../reducers/actions';
 
 const Map = () => {
     const dispatch = useDispatch();

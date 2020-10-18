@@ -30,7 +30,7 @@ export const haversineDist = (coordinates1, coordinates2) => {
 // uses google direction service
 export const routeDirections = async (origin, destination, google , waypoint) =>{
     const directionsService = new google.maps.DirectionsService();
-    
+    //TODO: options for travel mode
     const directionRequest = {
         origin,
         destination,

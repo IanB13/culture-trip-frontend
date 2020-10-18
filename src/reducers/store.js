@@ -3,15 +3,13 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import mapReducer from './mapReducer';
-import routeReducer from './routeReducer';
-import chargerReducer from './chargerReducer';
-import locationsReducer from './locationsReducer';
+import markerReducer from './markerReducer';
+import infoWindowReducer from './infoWindowReducer';
 
 const reducer = combineReducers({
-    chargers: chargerReducer,
-    locations: locationsReducer,
     google: mapReducer,
-    route: routeReducer
+    markers: markerReducer,
+    infoWindow:infoWindowReducer
 })
 
 export const store = createStore(

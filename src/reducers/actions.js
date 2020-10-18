@@ -1,26 +1,21 @@
-import {jobMarkerGenerator} from '../services/marker/generate';
 import {store} from './store'
-
-//initilize map
+import {googleApiKey, googleMapsOptions} from "../utils/config"
 import GoogleMapsApiLoader from "google-maps-api-loader";
-const apiKey = process.env.REACT_APP_API_KEY;
-//sets location to London,England
-const googleMapsOptions = {
-    zoom: 10.06,
-    center: {
-        lat: 51.4894681,
-        lng:  -0.1324313
-    },
-    streetViewControl: false,
-    fullscreenControl: false,
-    mapTypeControl: false,
-}
+import {markerGenerator} from '../utils/marker/generate'
+
+//Loading sequence to start, creates map and sets markers
+export const googleFinishedLoading  = (mapRef) => async (dispatch) =>{
+    await dispatch(initMap(mapRef))
+    const initGoogle = store.getState().google
+    await dispatch(initalizeMarkers(initGoogle))
+    await dispatch(initDirectionsRender(initGoogle))
+  }
 
 //Creates google map
 export const initMap = (mapRef) =>{
     return async dispatch => {
-        const google = await GoogleMapsApiLoader({ apiKey })
-        const map = new google.maps.Map(mapRef.current, googleMapsOptions);
+        const google = await GoogleMapsApiLoader({ apiKey: googleApiKey })
+        const map = new google.maps.Map(mapRef.current, googleMapsOptions)
         dispatch({
             type: 'INIT_MAP',
             data:{
@@ -32,7 +27,7 @@ export const initMap = (mapRef) =>{
     }
 }
 
-//Creates google map
+//initilized directions render, should add some options
 export const initDirectionsRender = (google) =>{
     return async dispatch => {
         const directionsRenderer = new google.maps.DirectionsRenderer();
@@ -47,18 +42,18 @@ export const initDirectionsRender = (google) =>{
     }
 }
 
-// Initilizes Jobs and builder
-export const initalizeChargerMarkers =(google) =>{
-    return  dispatch => {
-        const data = jobMarkerGenerator(google)
+
+export const initalizeMarkers =(google) =>{
+    return  async dispatch => {
+        const data = await markerGenerator(google)
         dispatch({
-            type: 'INIT_CHARGER_MARKERS',
+            type: 'INIT_MARKERS',
             data
         })
     }
 }
 
-
+//TODO: get rid of not generic
 export const addHome = (markerData) =>{
     return  dispatch => {
         dispatch({
@@ -68,7 +63,7 @@ export const addHome = (markerData) =>{
     }
 
 }
-
+//TODO: get rid of not generic
 export const addWork = (markerData) => {
     return  dispatch => {
         dispatch({
@@ -79,10 +74,11 @@ export const addWork = (markerData) => {
 
 }
 
-//TODO: reduce into single dispatch
-export const googleFinishedLoading  = (mapRef) => async (dispatch) =>{
-    await dispatch(initMap(mapRef))
-    const initGoogle = store.getState().google
-    await dispatch(initalizeChargerMarkers(initGoogle))
-    await dispatch(initDirectionsRender(initGoogle))
-  }
+export const addInfoWindow = (infoWindow) => {
+    return  dispatch => {
+        dispatch({
+            type: 'OPEN_INFOWINDOW',
+            data: infoWindow
+        })
+    }
+}
