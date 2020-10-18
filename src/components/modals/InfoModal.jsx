@@ -1,7 +1,6 @@
 //simple modal that displays info in modal when button clicked
 import React from 'react'
-import { Button, Modal, Image } from 'semantic-ui-react'
-import smile from '../../resources/defaultIcons/smile.svg'
+import { Button, Modal } from 'semantic-ui-react'
 
 function InfoModal({x,y}) {
   const [open, setOpen] = React.useState(false)
@@ -18,12 +17,6 @@ function InfoModal({x,y}) {
     "marginRight": "0px"
   }
 
-  const iconStyle = {
-    "height": "1.5em",
-    'paddingLeft':' 0.2em',
-    'paddingRight': '0.2em'
-  }
-
   return (
     <Modal
       closeIcon
@@ -35,11 +28,33 @@ function InfoModal({x,y}) {
     >
       <Modal.Content>
         <p>
-          Generic INFO
+          This web app uses data that was scraped from{" "}
+          <a href="https://theculturetrip.com/">
+            culture trips website
+          </a>
+          .
+          The locations were placed on the map using the experiences start address and generating a
+          coordinate point from them using the google maps locations api.
         </p>
-        <Image src = {smile} alt="smile" inline style = {iconStyle} /> 
-        <div></div>
-        <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <p>
+          Frontend code avalible{" "}
+          <a href = "https://github.com/IanB13/culture-trip-frontend">here</a>
+        </p>
+        <p>
+          Backend code avalible{" "}
+          <a href = "https://github.com/IanB13/culture-trip-backend">here</a>
+        </p>
+        <p>
+          Icons made by{" "}
+          <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+            Freepik
+            </a>
+          {" "}from{" "}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+            </a>
+            .
+        </p>
       </Modal.Content>
     </Modal>
   )

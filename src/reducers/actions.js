@@ -8,7 +8,6 @@ export const googleFinishedLoading  = (mapRef) => async (dispatch) =>{
     await dispatch(initMap(mapRef))
     const initGoogle = store.getState().google
     await dispatch(initalizeMarkers(initGoogle))
-    await dispatch(initDirectionsRender(initGoogle))
   }
 
 //Creates google map
@@ -27,21 +26,6 @@ export const initMap = (mapRef) =>{
     }
 }
 
-//initilized directions render, should add some options
-export const initDirectionsRender = (google) =>{
-    return async dispatch => {
-        const directionsRenderer = new google.maps.DirectionsRenderer();
-        directionsRenderer.setMap(google.map);
-        dispatch({
-            type: 'INIT_DIRECTIONS_RENDERER',
-            data:{
-                ...google,
-                directionsRenderer
-            }
-        })
-    }
-}
-
 
 export const initalizeMarkers =(google) =>{
     return  async dispatch => {
@@ -51,27 +35,6 @@ export const initalizeMarkers =(google) =>{
             data
         })
     }
-}
-
-//TODO: get rid of not generic
-export const addHome = (markerData) =>{
-    return  dispatch => {
-        dispatch({
-            type: 'ADD_HOME_LOCATION',
-            data: {...markerData},
-        })
-    }
-
-}
-//TODO: get rid of not generic
-export const addWork = (markerData) => {
-    return  dispatch => {
-        dispatch({
-            type: 'ADD_WORK_LOCATION',
-            data: {...markerData},
-        })
-    }
-
 }
 
 export const addInfoWindow = (infoWindow) => {

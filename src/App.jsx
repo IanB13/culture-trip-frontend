@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import './App.css';
 import Map from './components/map/Map'; 
@@ -10,8 +9,8 @@ const App = () => {
   return (
     <div className="App">
       <Map />
-{/*       <Instructions />
-      <InfoModal x={12} y={12} /> */}
+      <Instructions />
+      <InfoModal x={12} y={12} />
     </div>
   );
 }

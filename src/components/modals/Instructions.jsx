@@ -1,16 +1,10 @@
 //simple modal that pops up on start then never again
 import React from 'react'
-import { Modal, List ,Image } from 'semantic-ui-react'
-import smile from '../../resources/defaultIcons/smile.svg'
+import { Modal, List} from 'semantic-ui-react'
+
 
 const InfoModal = () => {
   const [open, setOpen] = React.useState(true)
-
-  const IconStyle = {
-    "height": "1.5em",
-    'paddingLeft':' 0.2em',
-    'paddingRight': '0.2em'
-}
   return (
     <Modal
       closeIcon
@@ -19,13 +13,14 @@ const InfoModal = () => {
       onClose={() => setOpen(false)}
     >
       <Modal.Content>
-        <List as='ol'>
-        <List.Item as='li'>Instruction steps </List.Item>
-        <List.Item as='li'>For you </List.Item>
-        <List.Item as='li'>
-          To use
-          <Image src = {smile} alt="smile" inline style = {IconStyle} /> 
-         </List.Item>
+        <List as='ul'>
+          <List.Item as='li'>This web app displays experiences in England</List.Item>
+          <List.Item as='li'>Experiences were generated from culture trips website</List.Item>
+          <List.Item as='li'>For more info go{" "}
+           <a href ="https://theculturetrip.com/europe/united-kingdom/england/london/experiences/">
+             here
+           </a>
+           </List.Item>
         </List>
       </Modal.Content>
     </Modal>
