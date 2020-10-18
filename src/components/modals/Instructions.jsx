@@ -14,12 +14,13 @@ const InfoModal = () => {
     >
       <Modal.Content>
         <List as='ul'>
-          <List.Item as='li'>This web app displays experiences in England</List.Item>
-          <List.Item as='li'>Experiences were generated from culture trips website</List.Item>
-          <List.Item as='li'>For more info go{" "}
+          <List.Item as='li'>This web app displays experiences in England generated from the Culture Trip website.</List.Item>
+          <List.Item as='li'>        
+          Click{" "}
            <a href ="https://theculturetrip.com/europe/united-kingdom/england/london/experiences/">
              here
            </a>
+           {" "}for more information.
            </List.Item>
         </List>
       </Modal.Content>

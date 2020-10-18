@@ -33,15 +33,14 @@ function InfoModal({x,y}) {
             culture trips website
           </a>
           .
-          The locations were placed on the map using the experiences start address and generating a
-          coordinate point from them using the google maps locations api.
+          The locations were found using each experience’s start address then coordinate points were generated using the Google Maps Location API.
         </p>
         <p>
-          Frontend code avalible{" "}
+          Frontend code can be found{" "}
           <a href = "https://github.com/IanB13/culture-trip-frontend">here</a>
         </p>
         <p>
-          Backend code avalible{" "}
+          Backend code can be found{" "}
           <a href = "https://github.com/IanB13/culture-trip-backend">here</a>
         </p>
         <p>
