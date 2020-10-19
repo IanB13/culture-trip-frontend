@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const getLocations = async () =>{
-    const locations = await axios.get("http://localhost:5000/locations")
+    const locations = await axios.get(`/locations`)
     return locations.data
 }
 
