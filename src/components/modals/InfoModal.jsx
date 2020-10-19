@@ -30,7 +30,7 @@ function InfoModal({x,y}) {
         <p>
           This web app uses data that was scraped from{" "}
           <a href="https://theculturetrip.com/">
-            culture trips website
+            Culture Trip's website
           </a>
           .
           The locations were found using each experience’s start address then coordinate points were generated using the Google Maps Location API.
